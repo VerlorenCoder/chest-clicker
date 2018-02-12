@@ -11,9 +11,10 @@ var direction = UP
 # =======================================
 # Variables (calculated during runtime)
 # =======================================
-var chest
-var chest_y
-var chest_x
+var title
+var title_x
+var title_y
+var glow
 
 # =======================================
 # Enumerations 
@@ -23,33 +24,41 @@ enum {UP, DOWN}
 # =======================================
 # Constants
 # =======================================
-const counter_limit = 20
-const velocity_initial_value = 0.0050
-const velocity_increment_value = 0.0025
+const counter_limit = 10
+const velocity_initial_value = 0.0200
+const velocity_increment_value = 0.0100
+const rotation_speed = -0.0001
 
 # =======================================
 # Overrided functions
 # =======================================
 func _ready():
-	chest = get_node("Chest")
-	chest_x = chest.get_pos().x
+	title = get_node("Title")
+	glow = get_node("Glow")
+	title_x = title.get_pos().x
 	set_process(true)
-	pass
 	
 func _process(delta):
+	move_up_and_down(delta)
+	glow.rotate(rotation_speed)
+
+# =======================================
+# Additional functions
+# =======================================
+func move_up_and_down(delta):
 	passed_time += delta
 	
 	if passed_time >= velocity:
 		passed_time = 0.0
 		counter += 1
 		velocity += velocity_increment_value
-		
+
 		if direction == UP:
-			chest_y = chest.get_pos().y - 1
+			title_y = title.get_pos().y - 1
 		else:
-			chest_y = chest.get_pos().y + 1
+			title_y = title.get_pos().y + 1
 			
-		chest.set_pos(Vector2(chest_x, chest_y))
+		title.set_pos(Vector2(title_x, title_y))
 		
 		if counter >= counter_limit:
 			counter = 0
