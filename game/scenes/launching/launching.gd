@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 # =======================================
 # Variables (initialized)
@@ -37,10 +37,17 @@ func _ready():
 	glow = get_node("Glow")
 	title_x = title.get_pos().x
 	set_process(true)
+	set_process_input(true)
 	
 func _process(delta):
 	move_up_and_down(delta)
 	glow.rotate(rotation_speed)
+	
+func _input(event):
+	if event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT and event.pressed:
+		print("Loading main menu scene...")
+		get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+		print("Main menu scene has been loaded successfully.")
 
 # =======================================
 # Additional functions
