@@ -39,6 +39,8 @@ func _input(event):
 	elif event.is_action_pressed("ui_up") and active_label > NEW_GAME:
 		active_label -= 1
 		update_highlighting(active_label + 1)
+	elif event.is_action_pressed("ui_accept") and active_label == QUIT:
+		get_tree().quit()
 
 # =======================================
 # Additional functions
