@@ -39,6 +39,34 @@ func _input(event):
 	elif event.is_action_pressed("ui_up") and active_label > NEW_GAME:
 		active_label -= 1
 		update_highlighting(active_label + 1)
+	elif event.is_action_pressed("ui_accept") and active_label == NEW_GAME:
+		print("Loading new game scene...")
+		get_tree().change_scene("res://scenes/new_game/new_game.tscn")
+		print("New game scene has been loaded successfully.")
+	elif event.is_action_pressed("ui_accept") and active_label == ACHIEVEMENTS:
+		print("Loading achievements scene...")
+		get_tree().change_scene("res://scenes/achievements/achievements.tscn")
+		print("Achievements scene has been loaded successfully.")
+	elif event.is_action_pressed("ui_accept") and active_label == LOAD_GAME:
+		print("Loading load game scene...")
+		get_tree().change_scene("res://scenes/load_game/load_game.tscn")
+		print("Load game scene has been loaded successfully.")
+	elif event.is_action_pressed("ui_accept") and active_label == OPTIONS:
+		print("Loading options scene...")
+		get_tree().change_scene("res://scenes/options/options.tscn")
+		print("Options scene has been loaded successfully.")
+	elif event.is_action_pressed("ui_accept") and active_label == HELP:
+		print("Loading help scene...")
+		get_tree().change_scene("res://scenes/help/help.tscn")
+		print("Help scene has been loaded successfully.")
+	elif event.is_action_pressed("ui_accept") and active_label == CREDITS:
+		print("Loading credits scene...")
+		get_tree().change_scene("res://scenes/credits/credits.tscn")
+		print("Credits scene has been loaded successfully.")
+	elif event.is_action_pressed("ui_accept") and active_label == SECRETS:
+		print("Loading secrets scene...")
+		get_tree().change_scene("res://scenes/secrets/secrets.tscn")
+		print("Secrets scene has been loaded successfully.")
 	elif event.is_action_pressed("ui_accept") and active_label == QUIT:
 		get_tree().quit()
 
